@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@conference-demos/edgedb-client": [
+        "libs/database/edgedb-client/src/index.ts"
+      ],
+      "@conference-demos/frontend-mobile-app": [
+        "libs/frontend/mobile-app/src/index.ts"
+      ],
+      "@conference-demos/prisma-client": [
+        "libs/database/prisma-client/src/index.ts"
+      ],
+      "@conference-demos/trpc-client": [
+        "libs/frontend/trpc-client/src/index.ts"
+      ],
+      "@conference-demos/trpc-server": ["libs/api/trpc-server/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

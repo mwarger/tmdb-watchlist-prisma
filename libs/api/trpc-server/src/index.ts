@@ -1,0 +1,5 @@
+export { appRouter } from './lib/router'
+export type { AppRouter } from './lib/router'
+export { createContext } from './lib/context'
+export * from './lib/MoviesSchema'
+export * from './lib/trpc-helper'

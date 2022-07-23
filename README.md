@@ -4,7 +4,7 @@ This app uses TMDB to retrieve a list of Now Playing movies.  You can add/remove
 
 Simple app that showcases the following technology.
 
-Expo + tRPC + Prisma + NextJS + Nx + zod + react-hook-form
+Expo + tRPC + Prisma + NextJS + Nx + zod + react-hook-form + solito
 
 <img src="./ss-splash.png" width="200" />
 <img src="./ss-signin.png" width="200"/>

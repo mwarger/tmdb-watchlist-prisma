@@ -2,7 +2,7 @@
 
 Simple app that showcases the following technology.
 
-Expo + TRPC + Prisma + NextJS + Nx
+Expo + tRPC + Prisma + NextJS + Nx
 
 
 ## Setup

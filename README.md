@@ -2,4 +2,21 @@
 
 Simple app that showcases the following technology.
 
-Expo + TRPC + Prisma on NextJS + Nx
+Expo + TRPC + Prisma + NextJS + Nx
+
+
+## Setup
+
+Add your database and TMDB bearer token to the `.env` file.  If you aren't using Postgres, make the appropriate changes to the Prisma schema.
+
+Run `yarn prisma:codegen` and `yarn prisma:migrate` to setup the DB and generated client.
+
+## Running the App
+
+### Run the API
+
+`nx serve next-app`
+
+### Run the App
+
+`nx run-ios mobile`

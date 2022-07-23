@@ -108,7 +108,6 @@
     "nx": "14.3.6",
     "prettier": "^2.6.2",
     "prisma": "4.0.0",
-    "quicktype": "^15.0.261",
     "react-test-renderer": "18.2.0",
     "reactotron-react-native": "^5.0.2",
     "ts-jest": "27.1.4",

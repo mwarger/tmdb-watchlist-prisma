@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "conference-demos",
+  "npmScope": "tmdb-watchlist-prisma",
   "affected": {
     "defaultBase": "main"
   },
@@ -15,8 +15,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "ZmMxYWIwNmEtOWIyZS00NDYzLWEzMzItYjU1NjdlOTNjZGFjfHJlYWQtd3JpdGU="
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },

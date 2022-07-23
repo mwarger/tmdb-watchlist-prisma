@@ -4,16 +4,12 @@ This app uses TMDB to retrieve a list of Now Playing movies.  You can add/remove
 
 Simple app that showcases the following technology.
 
-Expo + tRPC + Prisma + NextJS + Nx
-...
-zod
-react-hook-form
-
+Expo + tRPC + Prisma + NextJS + Nx + zod + react-hook-form
 
 
 ## Setup
 
-Add your database and TMDB bearer token to the `.env` file.  If you aren't using Postgres, make the appropriate changes to the Prisma schema.
+Add your database and TMDB bearer token (instructions [here](https://www.themoviedb.org/documentation/api?language=en-US)) to the `.env` file.  If you aren't using Postgres, make the appropriate changes to the Prisma schema.
 
 Run `yarn prisma:codegen` and `yarn prisma:migrate` to setup the DB and generated client.
 

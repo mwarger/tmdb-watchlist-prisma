@@ -6,12 +6,11 @@ Simple app that showcases the following technology.
 
 Expo + tRPC + Prisma + NextJS + Nx + zod + react-hook-form
 
-![alt text](./ss-splash.png "splash")
-![alt text](./ss-signin.png "splash")
-![alt text](./ss-nowplaying.png "splash")
-![alt text](./ss-mywatchlist.png "splash")
-![alt text](./ss-signout.png "splash")
-
+<img src="./ss-splash.png" width="200" />
+<img src="./ss-signin.png" width="200"/>
+<img src="./ss-nowplaying.png" width="200"/>
+<img src="./ss-mywatchlist.png" width="200"/>
+<img src="./ss-signout.png" width="200"/>
 
 ## Setup
 

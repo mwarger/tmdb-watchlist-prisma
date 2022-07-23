@@ -1,5 +1,7 @@
 # tmdb-watchlist-prisma
 
+This app uses TMDB to retrieve a list of Now Playing movies.  You can add/remove movies to track which ones you've watched.  There's a "fake" auth flow as well to show navigation as well as tRPC middleware.
+
 Simple app that showcases the following technology.
 
 Expo + tRPC + Prisma + NextJS + Nx

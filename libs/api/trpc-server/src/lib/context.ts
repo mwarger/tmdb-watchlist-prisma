@@ -8,7 +8,16 @@ export const createContext = async ({
 }: trpcNext.CreateNextContextOptions) => {
   const TMDB_TOKEN = 'Bearer ' + process.env['TMDB_BEARER_TOKEN']
 
-  const response = { req, res, prisma, TMDB_TOKEN }
+  const response = { req, res, prisma, TMDB_TOKEN, uid: '' }
+
+  const bearerToken = req.headers.authorization || ''
+  const bearerTokenParts = bearerToken.split('Bearer ')
+  const bearerTokenValue = bearerTokenParts[1]
+
+  if (bearerTokenValue) {
+    response.uid = bearerTokenValue
+    return response
+  }
 
   return response
 }

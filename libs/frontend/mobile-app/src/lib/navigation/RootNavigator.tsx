@@ -5,28 +5,35 @@ import { AuthStack } from './AuthStack'
 import { WatchlistStack } from './Navigation'
 import * as SplashScreen from 'expo-splash-screen'
 import reactotron from 'reactotron-react-native'
+import { trpc } from '@conference-demos/trpc-client'
 
 export function RootNavigator() {
   reactotron.log?.('RootNavigator')
 
+  const syncAccount = trpc.useMutation(['user.syncAccount'], {}).mutateAsync
   const { userData } = useAuthenticatedUser()
   const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000)
-
-    return () => {
-      clearTimeout(timer)
+    async function syncUser() {
+      try {
+        await syncAccount()
+      } catch (error) {
+        console.log('syncUser error', error)
+      } finally {
+        setIsLoading(false)
+      }
     }
-  }, [])
+
+    if (userData.hasUser && userData.username) {
+      syncUser()
+    } else {
+      setIsLoading(false)
+    }
+  }, [syncAccount, userData.hasUser, userData.username])
 
   const onLayoutRootView = React.useCallback(async () => {
     if (!isLoading) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
       await SplashScreen.hideAsync()
     }
   }, [isLoading])

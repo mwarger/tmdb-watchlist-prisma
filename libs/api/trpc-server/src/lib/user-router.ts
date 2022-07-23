@@ -4,9 +4,28 @@ import {
   createWatchlistItem,
   deleteWatchlistItem as prismaDeleteWatchlistItem,
   getWatchlist,
+  upsertUser as prismaUpsert,
 } from '@conference-demos/prisma-client'
+import { TRPCError } from '@trpc/server'
 
 export const userDataRouter = createRouter()
+  .middleware(async ({ ctx, next }) => {
+    if (!ctx.uid) {
+      throw new TRPCError({ code: 'UNAUTHORIZED' })
+    }
+    return next()
+  })
+  .mutation('syncAccount', {
+    output: z.void(),
+    input: z.void(),
+    async resolve({ ctx }) {
+      // upsert with prisma
+      await prismaUpsert({
+        uid: ctx.uid,
+        email: ctx.uid,
+      })
+    },
+  })
   .mutation('addToWatchlist', {
     output: z.void(),
     input: z.object({
@@ -15,7 +34,7 @@ export const userDataRouter = createRouter()
     async resolve({ ctx, input }) {
       createWatchlistItem({
         movieId: input.id,
-        userId: '123',
+        userId: ctx.uid,
       })
     },
   })
@@ -31,7 +50,7 @@ export const userDataRouter = createRouter()
   .query('watchlist', {
     input: z.void(),
     async resolve({ ctx }) {
-      const uid = '123'
+      const uid = ctx.uid
 
       const watchlist = await getWatchlist(uid)
 

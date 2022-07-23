@@ -7,6 +7,7 @@ export interface AuthenticationProviderProps {
 
 type UserDataType = {
   hasUser: boolean
+  username: string
 }
 export const AuthenticatedUserContext = React.createContext<
   | {
@@ -19,7 +20,7 @@ export const AuthenticatedUserContext = React.createContext<
 export function AuthenticationProvider({
   children,
 }: AuthenticationProviderProps) {
-  const [userData, setUser] = React.useState({ hasUser: false })
+  const [userData, setUser] = React.useState({ hasUser: false, username: '' })
 
   return (
     <AuthenticatedUserContext.Provider

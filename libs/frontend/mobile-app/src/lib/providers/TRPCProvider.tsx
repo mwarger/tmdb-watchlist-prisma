@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { trpc } from '@conference-demos/trpc-client'
 import { ProviderProps } from './Provider'
 import reactotron from 'reactotron-react-native'
 
 import Constants from 'expo-constants'
+import { useAuthenticatedUser } from './AuthenticationProvider'
 
 const { manifest } = Constants
 let apiHost = ''
@@ -26,20 +27,22 @@ if (__DEV__) {
 }
 
 export function TRPCProvider({ children }: ProviderProps) {
+  const { userData } = useAuthenticatedUser()
   const [queryClient] = useState(() => new QueryClient())
-  const [trpcClient] = useState(() =>
-    trpc.createClient({
+  const trpcClient = useMemo(() => {
+    return trpc.createClient({
       url: `${apiHost}/api/trpc`,
 
       // optional
-      // async headers() {
+      headers() {
+        const idToken = userData.username
 
-      //   return {
-      //     authorization: `Bearer ${idToken}`,
-      //   }
-      // },
+        return {
+          authorization: `Bearer ${idToken}`,
+        }
+      },
     })
-  )
+  }, [userData.username])
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>

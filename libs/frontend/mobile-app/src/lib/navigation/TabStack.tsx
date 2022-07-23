@@ -3,8 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import { MyWatchlist } from './MyWatchlist'
-import { Button, Center, Text } from 'native-base'
+import { Button, Center, Text, Box, Stack } from 'native-base'
 import { useAuthenticatedUser } from '../providers/AuthenticationProvider'
+import TMDBLogo from './tmdb_logo.svg'
 
 export type HomeStackTabs = {
   MyWatchlist: undefined
@@ -65,13 +66,19 @@ function Settings() {
   const { setUser } = useAuthenticatedUser()
   return (
     <Center flex={1}>
-      <Button
-        onPress={() => {
-          setUser({ hasUser: false })
-        }}
-      >
-        <Text>Sign out</Text>
-      </Button>
+      <Stack space={2} width={'100%'} alignItems="center">
+        <Box display="flex" flexDirection={'column'} alignItems="center">
+          <Text>API provided by: </Text>
+          <TMDBLogo width={200} height={40} />
+        </Box>
+        <Button
+          onPress={() => {
+            setUser({ hasUser: false, username: '' })
+          }}
+        >
+          <Text>Sign out</Text>
+        </Button>
+      </Stack>
     </Center>
   )
 }

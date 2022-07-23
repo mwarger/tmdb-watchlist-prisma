@@ -3,6 +3,10 @@
 Simple app that showcases the following technology.
 
 Expo + tRPC + Prisma + NextJS + Nx
+...
+zod
+react-hook-form
+
 
 
 ## Setup

@@ -6,12 +6,6 @@ Simple app that showcases the following technology.
 
 Expo + tRPC + Prisma + NextJS + Nx + zod + react-hook-form + solito
 
-<img src="./ss-splash.png" width="200" />
-<img src="./ss-signin.png" width="200"/>
-<img src="./ss-nowplaying.png" width="200"/>
-<img src="./ss-mywatchlist.png" width="200"/>
-<img src="./ss-signout.png" width="200"/>
-
 ## Setup
 
 Add your database and TMDB bearer token (instructions [here](https://www.themoviedb.org/documentation/api?language=en-US)) to the `.env` file.  If you aren't using Postgres, make the appropriate changes to the Prisma schema.
@@ -30,3 +24,11 @@ Run `yarn prisma:codegen` and `yarn prisma:migrate` to setup the DB and generate
 ### Run the App
 
 `nx run-ios mobile`
+
+### Screenshots
+
+<img src="./ss-splash.png" width="200" />
+<img src="./ss-signin.png" width="200"/>
+<img src="./ss-nowplaying.png" width="200"/>
+<img src="./ss-mywatchlist.png" width="200"/>
+<img src="./ss-signout.png" width="200"/>

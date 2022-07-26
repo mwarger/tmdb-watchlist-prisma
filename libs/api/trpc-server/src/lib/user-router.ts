@@ -1,10 +1,10 @@
 import { z } from 'zod'
 import { createRouter } from './context'
 import {
+  upsertUser,
   createWatchlistItem,
-  deleteWatchlistItem as prismaDeleteWatchlistItem,
+  deleteWatchlistItem,
   getWatchlist,
-  upsertUser as prismaUpsert,
 } from '@conference-demos/prisma-client'
 import { TRPCError } from '@trpc/server'
 
@@ -20,7 +20,7 @@ export const userDataRouter = createRouter()
     input: z.void(),
     async resolve({ ctx }) {
       // upsert with prisma
-      await prismaUpsert({
+      await upsertUser({
         uid: ctx.uid,
         email: ctx.uid,
       })
@@ -32,7 +32,7 @@ export const userDataRouter = createRouter()
       id: z.string(),
     }),
     async resolve({ ctx, input }) {
-      createWatchlistItem({
+      await createWatchlistItem({
         movieId: input.id,
         userId: ctx.uid,
       })
@@ -44,7 +44,7 @@ export const userDataRouter = createRouter()
       id: z.string(),
     }),
     async resolve({ ctx, input }) {
-      await prismaDeleteWatchlistItem(input.id)
+      await deleteWatchlistItem(input.id)
     },
   })
   .query('watchlist', {

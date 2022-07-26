@@ -56,7 +56,7 @@ export const userDataRouter = createRouter()
 
       // make movie promises for each movie in watchlist
       const moviePromises =
-        watchlist?.watchList.map(({ movieId }) =>
+        watchlist.watchList.map(({ movieId }) =>
           fetch(`https://api.themoviedb.org/3/movie/${movieId}`, {
             headers: {
               Authorization: ctx.TMDB_TOKEN,

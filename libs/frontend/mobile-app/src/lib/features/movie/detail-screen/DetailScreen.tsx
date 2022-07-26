@@ -50,6 +50,10 @@ export function MovieDetailScreen({
   if (!movieResult) return null
 
   function handleWatched(movie: MovieById) {
+    if (!movie) {
+      return
+    }
+
     addToWatchlist(
       { id: movie.id.toString() },
       {
@@ -90,14 +94,13 @@ export function MovieDetailScreen({
         flexDirection="column"
         justifyContent="space-between"
       >
-        <MoviePoster item={movieResult.data} showOverview />
+        <MoviePoster item={movie} showOverview />
         {isWatchlistLoading ? (
           <Spinner />
         ) : watchedMovieId ? (
           <Button
             onPress={() => removeWatched(watchedMovieId)}
             isLoading={removeFromWatchlistLoading}
-            load
           >
             Remove from watchlist
           </Button>

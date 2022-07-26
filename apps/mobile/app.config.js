@@ -15,7 +15,7 @@ export default {
     owner: 'mwarger',
     name: 'Mobile',
     slug: 'mobile',
-    scheme: 'com.mwarger.mobile',
+    scheme: 'com.tmdb.watchlist',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
@@ -30,14 +30,14 @@ export default {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.mwarger.mobile',
+      bundleIdentifier: 'com.tmdb.watchlist',
     },
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#f44336',
       },
-      package: 'com.mwarger.mobile',
+      package: 'com.tmdb.watchlist',
     },
     web: {
       favicon: './assets/favicon.png',

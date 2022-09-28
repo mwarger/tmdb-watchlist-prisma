@@ -1,10 +1,10 @@
 import { z } from 'zod'
 import { createRouter } from './context'
-import { MoviesSchema, MovieType } from './MoviesSchema'
+import { MovieSchema, MoviesSchema, MovieType } from './MoviesSchema'
 
 export const tmdbRouter = createRouter()
   .query('nowPlaying', {
-    output: MoviesSchema,
+    output: z.array(MovieSchema),
     input: z.void(),
     async resolve({ ctx }) {
       const url = 'movie/now_playing'
@@ -20,17 +20,15 @@ export const tmdbRouter = createRouter()
 
       const movies = responseJson.results ?? []
 
-      return {
-        movies: movies.map((movie) => ({
-          ...movie,
-          posterImage: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-          backdropImage: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
-        })),
-      }
+      return movies.map((movie) => ({
+        ...movie,
+        posterImage: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+        backdropImage: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+      }))
     },
   })
   .query('search', {
-    output: MoviesSchema,
+    output: z.array(MovieSchema),
     input: z.object({
       query: z.string(),
     }),
@@ -46,13 +44,11 @@ export const tmdbRouter = createRouter()
 
       const movies = responseJson.results ?? []
 
-      return {
-        movies: movies.map((movie) => ({
-          ...movie,
-          posterImage: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-          backdropImage: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
-        })),
-      }
+      return movies.map((movie) => ({
+        ...movie,
+        posterImage: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+        backdropImage: `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`,
+      }))
     },
   })
   .query('byId', {

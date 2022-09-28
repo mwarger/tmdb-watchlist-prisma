@@ -25,7 +25,7 @@ export function NowPlayingScreen() {
       </Center>
     )
 
-  const movieData = data.movies
+  const movieData = data
 
   return <MovieList movieData={movieData} />
 }
